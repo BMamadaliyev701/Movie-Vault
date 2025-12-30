@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="uz">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Film Brauzer</title>
+        <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0; padding: 20px;
+            background: #121212;
+            color: #fff;
+        }
+        input, button {
+            padding: 10px;
+            font-size: 16px;
+        border-radius: 4px;
+            border: none;
+            margin-right: 10px;
+        }
+        button {
+            background: #1db954;
+            color: white;
+            cursor: pointer;
+        }
+        #movies {
+            margin-top: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill,minmax(150px,1fr));
+            gap: 15px;
+        }
+        .movie {
+            background: #222;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .movie:hover {
+            transform: scale(1.05);
+        }
+        .movie img {
+            width: 100%;
+            display: block;
+        }
+        .movie h3 {
+            margin: 10px;
+            font-size: 16px;
+        }
+        #player {
+            margin-top: 20px;
+            max-width: 640px;
+            max-height: 360px;
+        }
+    </style>
+    </head>
+    <body>
+
+        <h1>Film Brauzer</h1>
+        <input type="text" id="searchInput"
+            placeholder="Film nomini kiriting..." />
+        <button id="searchBtn">Qidirish</button>
+
+        <div id="movies"></div>
+
+        <div id="player"></div>
+
+        <script>
+        const API_KEY = "";  // Bu yerga kalitni yozing
+        const IMAGE_BASE = "https://image.tmdb.org/t/p/w500";
+        
+        const searchInput = document.getElementById('searchInput');
+        const searchBtn = document.getElementById('searchBtn');
+        const moviesDiv = document.getElementById('movies');
+        const playerDiv = document.getElementById('player');
+        
+        async function searchMovies(query) {
+            const url = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(query)}`;
+            const res = await fetch(url);
+            const data = await res.json();
+            return data.results;
+        }
+        
+        function displayMovies(movies) {
+            moviesDiv.innerHTML = '';
+            playerDiv.innerHTML = '';
+            if (!movies || movies.length === 0) {
+                moviesDiv.innerHTML = '<p>Hech narsa topilmadi.</p>';
+                return;
+            }
+            movies.forEach(movie => {
+                const div = document.createElement('div');
+                div.classList.add('movie');
+                div.innerHTML = `
+        <img src="${movie.poster_path ? IMAGE_BASE + movie.poster_path : 'https://via.placeholder.com/500x750?text=No+Image'}" alt="${movie.title}" />
+        <h3>${movie.title}</h3>
+        `;
+                div.addEventListener('click', () => showMovieDetails(movie.id));
+                moviesDiv.appendChild(div);
+            });
+        }
+        
+        async function showMovieDetails(movieId) {
+            playerDiv.innerHTML = '<p>Loading...</p>';
+            
+            // TMDb API orqali film tafsilotlarini olamiz, lekin videoni bevosita bera olmaydi.
+            // Lekin video keyingi misolda YouTube trailerini ko'rsatish mumkin.
+            
+            const url = `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${API_KEY}`;
+            const res = await fetch(url);
+            const data = await res.json();
+            
+            // YouTube trailer topamiz:
+            const trailer = data.results.find(video => video.site === "YouTube" && video.type === "Trailer");
+            
+            if (trailer) {
+                const iframe = document.createElement('iframe');
+                iframe.width = "640";
+                iframe.height = "360";
+                iframe.src = `https://www.youtube.com/embed/${trailer.key}`;
+                iframe.frameBorder = "0";
+                iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+                iframe.allowFullscreen = true;
+                playerDiv.innerHTML = '';
+                playerDiv.appendChild(iframe);
+            } else {
+                playerDiv.innerHTML = '<p>Trailer topilmadi.</p>';
+            }
+        }
+        
+        searchBtn.addEventListener('click', async () => {
+            const query = searchInput.value.trim();
+            if (!query) return;
+            const movies = await searchMovies(query);
+            displayMovies(movies);
+        });
+        
+        // Enter bilan qidirish:
+        searchInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                searchBtn.click();
+            }
+        });
+    </script>
+
+    </body>
+</html>

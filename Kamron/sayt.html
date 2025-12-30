@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="uz">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Kontakt Formasi</title>
+        <style>
+            form {
+            max-width: 400px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            }
+            label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            }
+            input[type="text"],
+            input[type="email"],
+            textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid gray;
+            border-radius: 4px;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+            }
+            input[type="text"]:focus,
+            input[type="email"]:focus,
+            textarea:focus {
+            border-color: blue;
+            outline: none;
+            }
+            button {
+                background-color: green;
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 4px;
+                cursor: pointer;
+                font-size: 16px;
+            }
+            button:hover {
+                background-color: darkgreen;
+            }
+        </style>    
+    </head>
+    <body>
+        <form class="contact-form">
+            <label for="Ismingiz">Ismingiz</label> <br>
+            <input type="text" placeholder="Ismingiz" /> <br> <br>
+            <label for="Email manzilingiz">Email manzilingiz</label> <br>
+            <input type="email" placeholder="Email manzilingiz" /> <br> <br>
+            <label for="murojat">Murojat uchun</label> <br>
+            <textarea placeholder="Xabaringiz"></textarea> <br> <br>
+            <button type="submit">Yuborish</button>
+        </form>
+    </body>
+</html> 

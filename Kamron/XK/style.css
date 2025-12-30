@@ -1,0 +1,53 @@
+.links-block a:hover {
+    color: #ff6600;
+    text-decoration: underline;
+    transition: ease 0.7s;
+}
+.form-block input[type="text"]:focus {
+    border: 2px solid blue;
+    background-color: yellow;
+}
+.table-block tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+.links-block .card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0 ,0, 0.2);
+}
+.list-block ul li:first-child {
+    font-weight: bold;
+}
+.list-block ul li:last-child {
+    color: red;
+    font-style: italic;
+}
+h2::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: black;
+    margin-bottom: 8px;
+}
+.list-block ul li::after {
+    content: " ★";
+    color: gold;
+}
+.button-block button:hover {
+    transform: scale(1.1);
+    transition: ease 0.9s;
+}
+.links-block a:not(.active) {
+    color: gray;
+    text-decoration: none;
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+.list-block ul li:nth-child(3n) {
+    color: gold;
+}
+
+
+
+
+
+

@@ -1,0 +1,129 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f4f4f4 url('https://images.unsplash.com/photo-1513104890138-7c7038d4177d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center fixed;
+    background-size: cover;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+}
+
+header {
+    background-color: rgba(228, 77, 38, 0.9);
+    color: white;
+    padding: 2rem 0;
+    margin-bottom: 2rem;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.pizza-menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    padding: 0;     
+}
+
+.pizza-card {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    width: 320px;
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pizza-card:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+}
+
+.pizza-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.pizza-card h3 {
+    margin: 15px 15px 5px;
+    color: #333;
+    font-size: 1.5rem;
+}
+
+.pizza-card p {
+    margin: 0 15px 15px;
+    color: #666;
+    font-size: 1rem;
+}
+
+.pizza-card .price {
+    display: block;
+    font-size: 1.6rem;
+    color: #e44d26;
+    font-weight: bold;
+    margin: 15px;
+}
+
+.add-to-cart {
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    margin: 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    width: calc(100% - 30px);
+    font-size: 1.1rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.add-to-cart:hover {
+    background-color: #4cae4c;
+}
+footer {
+    background-color: #222;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+
+}
+
+
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+
+    .pizza-menu {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .pizza-card {
+        width: 100%;
+        max-width: 400px;
+    }
+}
+
+@media (max-width: 480px) {
+    .pizza-card img {
+        height: 180px;
+    }
+}
+a {
+    text-decoration: none; color: inherit;
+}

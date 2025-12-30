@@ -1,0 +1,40 @@
+
+.container {
+    display: flex;
+    flex-direction: column; /*ustun yoki qator shakliga keltirish reverse qilish */
+    /* flex-wrap: wrap;
+    justify-content: ;
+    align-items:end ; */
+    /* flex-flow: column-reverse; */ 
+    gap: 16px 20px;
+    flex-basis: 200px;
+}
+.item-1,
+.item-2,
+.item-3,
+.item-4 {
+            background-color: #8ff17e;
+            padding: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            border-radius: 15px;
+}
+.item-1 {
+    font-size: 32px;
+    align-self: center;
+}
+.item-2 {
+    font-size: 64px;
+    /* order: -2 */
+    /* flex-grow: 1 */
+}
+.item-3 {
+    font-size:16 ;
+    /* order: -1; */
+    align-self: flex-start;
+}
+.item-4 {
+    font-size:16px;
+    align-self: flex-end;
+    /* flex-grow: 1; */
+}

@@ -1,0 +1,9 @@
+.el {
+    padding: 15px 25px;
+    font-size: 21px;
+    background-color: lightblue;
+    border: 2px ;
+}
+.container {
+    display: grid;
+}
