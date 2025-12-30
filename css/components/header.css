@@ -1,0 +1,146 @@
+/* Header */
+header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    margin-bottom: 30px;
+    gap: 20px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo i {
+    font-size: 1.8rem;
+    color: var(--accent-color);
+}
+
+.logo h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.logo h1 span {
+    color: var(--accent-color);
+    font-weight: 300;
+}
+
+.search-bar {
+    position: relative;
+    flex: 1 0 100%;
+    margin: 0;
+    order: 3;
+}
+
+.search-bar i:not(#searchBtn i) {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-secondary);
+}
+
+.search-bar input {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--glass-border);
+    padding: 12px 60px 12px 45px;
+    border-radius: 12px;
+    color: var(--text-primary);
+    outline: none;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(var(--blur-val));
+}
+
+.search-bar input:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 10px rgba(88, 166, 255, 0.2);
+}
+
+#searchBtn {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    bottom: 5px;
+    width: 45px;
+    background: var(--accent-color);
+    color: var(--bg-color);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+#searchBtn:hover {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+}
+
+.header-actions button {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--glass-border);
+    color: var(--text-primary);
+    padding: 10px 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(var(--blur-val));
+}
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+        padding: 10px 0;
+    }
+
+    .logo {
+        order: 1;
+        flex: 0 1 auto;
+        margin-bottom: 0;
+        justify-content: flex-start;
+    }
+
+    .header-actions {
+        order: 2;
+        flex: 0 1 auto;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .search-bar {
+        order: 3;
+        flex: 1 0 100%;
+        margin: 0;
+    }
+
+    .search-bar input {
+        padding: 10px 50px 10px 40px;
+        font-size: 0.9rem;
+    }
+
+    #searchBtn {
+        width: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo h1 {
+        font-size: 1.1rem;
+    }
+}
